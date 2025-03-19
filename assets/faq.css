@@ -1,0 +1,75 @@
+.mfaq-accordion {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.mfaq-question {
+    padding: 15px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    background: #f4f4f4;
+    color: #333;
+    padding-right: 40px; /* Space for the animated indicator on the right */
+}
+
+.mfaq-indicator {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; /* Width of the indicator */
+    height: 14px; /* Height of the indicator */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Base pseudo-element for the horizontal bar (constant part of + and -) */
+.mfaq-indicator::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; /* Width of the bar */
+    height: 2px; /* Thickness */
+    background: #666;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Vertical bar for the + sign, rotates to disappear for - */
+.mfaq-indicator::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px; /* Thickness */
+    height: 12px; /* Height of the bar */
+    background: #666;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* When active, rotate the vertical bar to align with horizontal (forming -) */
+.mfaq-accordion .ui-state-active .mfaq-indicator::after {
+    transform: translateY(-50%) rotate(90deg); /* Rotate to horizontal, blending with ::before */
+}
+
+.mfaq-answer {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background: #fff;
+    color: #333;
+}
+
+/* jQuery UI Overrides */
+.mfaq-accordion .ui-accordion-header {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.mfaq-accordion .ui-accordion-content {
+    margin: 0;
+    border: none;
+}
